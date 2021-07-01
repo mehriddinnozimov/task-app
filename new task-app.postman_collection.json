@@ -1,0 +1,632 @@
+{
+	"info": {
+		"_postman_id": "cf3e554e-c8fa-4605-8eda-5699549f5aea",
+		"name": "new task-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sign",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if(pm.response.json().success) {",
+							"    pm.environment.set(\"authToken3\", pm.response.json().data.token)",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"Mehriddin\",\n    \"password\" : \"nicolas11\",\n    \"email\": \"nico5357@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{lcl}}/user/sign",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						"sign"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if(pm.response.json().success) {",
+							"    pm.environment.set(\"authToken3\", pm.response.json().data.token)",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"nico5356@gmail.com\",\n    \"password\": \"nicolas11\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{lcl}}/user/login",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get another user by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{lcl}}/user/:id",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add user contact",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{lcl}}/user/:id/allowme",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						":id",
+						"allowme"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove user contact",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{lcl}}/user/:id/forbitme",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						":id",
+						"forbitme"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get another user tasks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{lcl}}/user/:id/tasks",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						":id",
+						"tasks"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get another user task",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{lcl}}/user/:id/tasks/:taskId",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						":id",
+						"tasks",
+						":taskId"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						},
+						{
+							"key": "taskId",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comment another/me user task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": \"tezroq bajar\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{lcl}}/user/:id/tasks/:id/comment",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						":id",
+						"tasks",
+						":id",
+						"comment"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{lcl}}/user/all",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update photo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "avatar",
+							"type": "file",
+							"src": "/home/nico/Desktop/favicon.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{lcl}}/user/me/avatar",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						"me",
+						"avatar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view photo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{lcl}}/user/:id/avatar",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						":id",
+						"avatar"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove photo",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{lcl}}/user/me/avatar",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						"me",
+						"avatar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get me",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{lcl}}/user/me",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{lcl}}/user/me/logout",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						"me",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{lcl}}/user/me",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update user",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Qamariddin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{lcl}}/user/me",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get tasks all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{lcl}}/user/tasks/",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						"tasks",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"taskning titli\",\n    \"description\": \"taskning tafsiloti\",\n    \"father\": {\n        \"title\": \"taskning otasi2\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{lcl}}/user/tasks/add",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						"tasks",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update task",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"completed\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{lcl}}/user/tasks/task/:id",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						"tasks",
+						"task",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update column",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"boshqaach\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{lcl}}/user/tasks/column/:id",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						"tasks",
+						"column",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove task",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{lcl}}/user/tasks/task/:id",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						"tasks",
+						"task",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove  column",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{lcl}}/user/tasks/column/:id",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						"tasks",
+						"column",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{authToken3}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "lcl",
+			"value": "http://localhost:3333"
+		}
+	]
+}
