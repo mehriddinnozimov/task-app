@@ -9,22 +9,25 @@ const auth = require("../middleware/auth")
 const mongoose = require("mongoose")
 
 router.get("/", auth, async (req, res) => {
-    let column = await Column.find({owner: req.user._id})
-    if(column.length < 1) return res.json({
+    let columns = await Column.find({owner: req.user._id})
+    if(columns.length < 1) return res.json({
         success: true,
         data: {
             message: "Mavjud emas"
         }
     })
     let tasks = []
-    column.forEach(async (val, i) => {
+    columns.forEach(async (val, i) => {
         let task = await Task.find({father: val._id})
         if(!task) throw new Error()
         tasks.push({
-            father: val.title,
+            father: {
+                title: val.title,
+                _id: val._id
+            },
             tasks: task
         })
-        if(column.length - 1 == i) {
+        if(columns.length - 1 == i) {
             res.json({
                 success: true,
                 data: {
@@ -33,6 +36,33 @@ router.get("/", auth, async (req, res) => {
             })
         }
     })    
+})
+
+router.post("/add/column", auth, async (req, res) => {
+    try {
+        let column = new Column({
+            title: req.body.title,
+            owner: req.user._id
+        })
+
+        await column.save()
+
+        res.json({
+            success: true,
+            data: {
+                message: "Column yaratildi",
+                column
+            }
+        })
+    } catch (e) {
+        res.json({
+            success: false,
+            data: {
+                message: "Column yaratilishida xatolik ro`y berdi",
+                err: e
+            }
+        })
+    }
 })
 
 router.post("/add", auth, async (req, res) => {
@@ -45,7 +75,8 @@ router.post("/add", auth, async (req, res) => {
         res.json({
             success: true,
             data: {
-                message: "Task yaratildi"
+                message: "Task yaratildi",
+                task
             }
         })
     } catch (e) {
@@ -91,7 +122,12 @@ router.put("/task/:id", auth, async (req, res) => {
         let father = await Column.findById(task.father)
         let user = await User.findById(father.owner)
         if(user._id.toString() !== req.user._id.toString()) throw new Error();
-        await Task.findByIdAndUpdate(req.params.id, req.body)
+        await Task.findByIdAndUpdate(req.params.id, {
+            title: req.body.title ? req.body.title : task.title,
+            description: req.body.description ? req.body.description : task.description,
+            completed: req.body.completed ? req.body.completed : task.completed,
+            father: req.body.father ? req.body.father : task.father
+        })
         res.json({
             success: true,
             data: {

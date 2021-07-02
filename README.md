@@ -2,7 +2,10 @@
 
 new task-app.postman_collection.json -- postman uchun
 
-npm i qilishni unutmang
+**npm i** qilishni unutmang
 
-postmandagi :id/:taskId o'rniga mongoose objectId qo'yishingiz kerak
+Postmandagi o`zgaruvchilar:
+:userId o`rniga userning _id sini qo'yish kerak
+:taskId o`rniga taskning _id sini qo'yish kerak
+:columnId o`rniga comlumnning _id sini qo'yish kerak
 

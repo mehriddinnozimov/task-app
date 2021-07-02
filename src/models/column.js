@@ -16,6 +16,8 @@ const columnS = new mongoose.Schema({
     }
 })
 
+//agar columnning owneri boshqa bo`lsa unique false bo`ladigan kod
+
 columnS.plugin(findOrCreate)
 
 columnS.pre("remove", async function(next){

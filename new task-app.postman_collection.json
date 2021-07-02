@@ -91,17 +91,17 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{lcl}}/user/:id",
+					"raw": "{{lcl}}/user/:userId",
 					"host": [
 						"{{lcl}}"
 					],
 					"path": [
 						"user",
-						":id"
+						":userId"
 					],
 					"variable": [
 						{
-							"key": "id",
+							"key": "userId",
 							"value": ""
 						}
 					]
@@ -115,18 +115,18 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{lcl}}/user/:id/allowme",
+					"raw": "{{lcl}}/user/:userId/allowme",
 					"host": [
 						"{{lcl}}"
 					],
 					"path": [
 						"user",
-						":id",
+						":userId",
 						"allowme"
 					],
 					"variable": [
 						{
-							"key": "id",
+							"key": "userId",
 							"value": ""
 						}
 					]
@@ -140,18 +140,18 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{lcl}}/user/:id/forbitme",
+					"raw": "{{lcl}}/user/:userId/forbitme",
 					"host": [
 						"{{lcl}}"
 					],
 					"path": [
 						"user",
-						":id",
+						":userId",
 						"forbitme"
 					],
 					"variable": [
 						{
-							"key": "id",
+							"key": "userId",
 							"value": ""
 						}
 					]
@@ -165,18 +165,18 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{lcl}}/user/:id/tasks",
+					"raw": "{{lcl}}/user/:userId/tasks",
 					"host": [
 						"{{lcl}}"
 					],
 					"path": [
 						"user",
-						":id",
+						":userId",
 						"tasks"
 					],
 					"variable": [
 						{
-							"key": "id",
+							"key": "userId",
 							"value": ""
 						}
 					]
@@ -190,19 +190,19 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{lcl}}/user/:id/tasks/:taskId",
+					"raw": "{{lcl}}/user/:userId/tasks/:taskId",
 					"host": [
 						"{{lcl}}"
 					],
 					"path": [
 						"user",
-						":id",
+						":userId",
 						"tasks",
 						":taskId"
 					],
 					"variable": [
 						{
-							"key": "id",
+							"key": "userId",
 							"value": ""
 						},
 						{
@@ -229,20 +229,24 @@
 					}
 				},
 				"url": {
-					"raw": "{{lcl}}/user/:id/tasks/:id/comment",
+					"raw": "{{lcl}}/user/:userId/tasks/:taskId/comment",
 					"host": [
 						"{{lcl}}"
 					],
 					"path": [
 						"user",
-						":id",
+						":userId",
 						"tasks",
-						":id",
+						":taskId",
 						"comment"
 					],
 					"variable": [
 						{
-							"key": "id",
+							"key": "userId",
+							"value": ""
+						},
+						{
+							"key": "taskId",
 							"value": ""
 						}
 					]
@@ -303,18 +307,18 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{lcl}}/user/:id/avatar",
+					"raw": "{{lcl}}/user/:userId/avatar",
 					"host": [
 						"{{lcl}}"
 					],
 					"path": [
 						"user",
-						":id",
+						":userId",
 						"avatar"
 					],
 					"variable": [
 						{
-							"key": "id",
+							"key": "userId",
 							"value": ""
 						}
 					]
@@ -471,13 +475,13 @@
 			"response": []
 		},
 		{
-			"name": "update task",
+			"name": "add column",
 			"request": {
-				"method": "PUT",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"completed\": true\n}",
+					"raw": "{\n    \"title\": \"qandaydir column 2\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -485,7 +489,36 @@
 					}
 				},
 				"url": {
-					"raw": "{{lcl}}/user/tasks/task/:id",
+					"raw": "{{lcl}}/user/tasks/add/column",
+					"host": [
+						"{{lcl}}"
+					],
+					"path": [
+						"user",
+						"tasks",
+						"add",
+						"column"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update task",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"father\" : \"60de9632366a5f0eae83ef25\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{lcl}}/user/tasks/task/:taskId",
 					"host": [
 						"{{lcl}}"
 					],
@@ -493,11 +526,11 @@
 						"user",
 						"tasks",
 						"task",
-						":id"
+						":taskId"
 					],
 					"variable": [
 						{
-							"key": "id",
+							"key": "taskId",
 							"value": ""
 						}
 					]
@@ -520,7 +553,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{lcl}}/user/tasks/column/:id",
+					"raw": "{{lcl}}/user/tasks/column/:columnId",
 					"host": [
 						"{{lcl}}"
 					],
@@ -528,11 +561,11 @@
 						"user",
 						"tasks",
 						"column",
-						":id"
+						":columnId"
 					],
 					"variable": [
 						{
-							"key": "id",
+							"key": "columnId",
 							"value": ""
 						}
 					]
@@ -546,7 +579,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{lcl}}/user/tasks/task/:id",
+					"raw": "{{lcl}}/user/tasks/task/:taskId",
 					"host": [
 						"{{lcl}}"
 					],
@@ -554,11 +587,11 @@
 						"user",
 						"tasks",
 						"task",
-						":id"
+						":taskId"
 					],
 					"variable": [
 						{
-							"key": "id",
+							"key": "taskId",
 							"value": ""
 						}
 					]
@@ -572,7 +605,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{lcl}}/user/tasks/column/:id",
+					"raw": "{{lcl}}/user/tasks/column/:columnId",
 					"host": [
 						"{{lcl}}"
 					],
@@ -580,11 +613,11 @@
 						"user",
 						"tasks",
 						"column",
-						":id"
+						":columnId"
 					],
 					"variable": [
 						{
-							"key": "id",
+							"key": "columnId",
 							"value": ""
 						}
 					]
